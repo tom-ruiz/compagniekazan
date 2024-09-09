@@ -30,6 +30,9 @@ add_action('wp_enqueue_scripts', function () {
         wp_enqueue_script_module('wordplate', get_theme_file_uri('assets/' . $manifest['resources/js/index.js']['file']));
         wp_enqueue_style('wordplate', get_theme_file_uri('assets/' . $manifest['resources/js/index.js']['css'][0]));
     }
+
+    // Enqueue Adobe Fonts
+    wp_enqueue_style('adobe-fonts', 'https://use.typekit.net/les1ymj.css', [], null);
 });
 
 // Remove admin menu items.

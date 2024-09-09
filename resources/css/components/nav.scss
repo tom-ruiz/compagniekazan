@@ -1,78 +1,99 @@
 @import "../global/variables";
 
 .nav {
-  width: 25%;
-  height: 100vh;
-
   &-logo {
     background-color: $color-black;
-    width: 100%;
-    height: 100px;
+    width: 22%;
+    height: 8em;
+    position: absolute;
+    z-index: 1000;
   }
 
   &-pattern {
     height: 100px;
     background-color: $color-black;
   }
+}
 
-  &__container {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    align-items: flex-start;
-  }
+/* Conteneur de navigation fixe */
+.menu-navigation-container {
+  width: 22%;
+  height: 100vh;
+  position: fixed;
+  z-index: 999;
+  background-color: white;
+  padding: 8em 0; /* Garde un padding vertical de 8em en haut et en bas */
+  box-sizing: border-box; /* Inclut le padding dans la hauteur totale */
+  display: flex;
+  margin-top: 2em;
+  flex-direction: column;
 }
 
 /* Liste du menu (ul) */
 .menu {
-  list-style: none; // Supprime les puces
-  padding: 0;
+  padding: 0 2em; /* Supprime le padding vertical, uniquement du padding horizontal */
+  height: 100%;
   margin: 0;
+  list-style: none; /* Supprime les puces */
+  flex-grow: 1; /* Permet au menu d'occuper tout l'espace vertical restant */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Distribution dynamique des <li> */
 }
 
 /* Éléments de menu (li) */
 .menu-item {
-  margin-bottom: 15px; // Espacement entre les items verticaux
-
   &:last-child {
-    margin-bottom: 0; // Supprime l'espacement après le dernier item
+    margin-bottom: 0; /* Supprime l'espacement après le dernier item */
   }
 
   a {
-    display: block; // Le lien prend toute la largeur
-    text-decoration: none; // Supprime le soulignement
-    color: #333; // Couleur du texte
-    font-size: 18px; // Taille de la police
-    padding: 10px 15px; // Ajoute de l'espace autour du texte
-    border-radius: 4px; // Arrondit légèrement les bords
-    transition: background-color 0.3s, color 0.3s; // Transition pour hover
-
-    // Effet au survol (hover)
+    font-family: $font-title;
+    display: block; /* Le lien prend toute la largeur */
+    text-decoration: none; /* Supprime le soulignement initial */
+    color: $color-black;
+    font-size: 30px; /* Taille de la police */
+    padding-bottom: 15px; /* Ajoute de l'espace autour du texte */
+    position: relative; /* Nécessaire pour le pseudo-élément ::after */
+    transition: color 0.3s, transform 0.3s; /* Transition sur la couleur et la transformation */
+  
     &:hover {
-      background-color: #0073aa; // Couleur de fond au survol
-      color: #fff; // Change la couleur du texte au survol
+      color: rgb(49, 49, 49); /* Change la couleur du texte au survol */
+      transform: scale(1.05); /* Légère mise à l'échelle au survol */
+    }
+  
+    /* Pseudo-élément pour le soulignement animé */
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 30%;
+      height: 2px;
+      background-color: rgb(49, 49, 49);
+      transform: scaleX(0); /* Par défaut, l'élément est invisible */
+      transform-origin: left; /* Commence l'animation depuis la gauche */
+      transition: transform 0.3s ease; /* Animation de l'extension du soulignement */
+    }
+  
+    &:hover::after {
+      transform: scaleX(1); /* Animer le soulignement au survol */
     }
   }
+  
 
-  // Élément actif (current-menu-item ou current_page_item)
+  /* Élément actif (current-menu-item ou current_page_item) */
   &.current-menu-item a,
   &.current_page_item a {
-    background-color: #005177; // Couleur de fond pour l'élément actif
-    color: #fff; // Couleur du texte pour l'élément actif
-    font-weight: bold; // Rend l'élément actif plus visible
-    position: relative; // Nécessaire pour le ">" placé avant le texte
+    font-weight: bold; /* Rend l'élément actif plus visible */
+    position: relative;
 
-    // Ajouter un ">" avant l'élément actif
     &::before {
-      content: "> "; // Ajoute le symbole ">"
-      color: $color-black; // Couleur du ">"
+      content: "> "; /* Ajoute le symbole ">" */
+      color: $color-black; /* Couleur du ">" */
       font-weight: bold;
-      margin-right: 5px; // Espace entre le ">" et le texte
+      margin-right: 5px; /* Espace entre le ">" et le texte */
     }
 
-    // Changement de couleur au survol de l'élément actif (facultatif)
-    &:hover {
-      background-color: #003855; // Couleur de fond au hover pour l'élément actif
-    }
   }
 }

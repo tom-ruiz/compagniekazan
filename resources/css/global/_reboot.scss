@@ -1,3 +1,5 @@
+@import "../global/variables";
+
 body {
   margin: 0;
 }
@@ -9,5 +11,23 @@ body {
 }
 
 .main {
-  width: 75%;
+  width: 78%;
+  margin-left: 22%;
 }
+
+h1, h2{
+  font-family: $font-title;
+  font-weight: 400;
+  color: white;
+  margin: 0;
+}
+
+h3, h4{
+  font-family: $font-title;
+}
+
+p{
+@include font-light;
+  margin: 0;
+}
+
