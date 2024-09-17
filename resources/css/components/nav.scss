@@ -7,15 +7,45 @@
     height: 8em;
     position: absolute;
     z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @media (max-width: 768px) {
+      display: none; /* Masquer le logo sur petits écrans */
+    }
+
+    &-text {
+      font-family: "Qene-G-Demo";
+      color: white;
+      font-size: 60px;
+      white-space: nowrap;
+      text-align: center;
+      width: 100%;
+      margin-top: -20px;
+    }
   }
 
   &-pattern {
-    height: 100px;
+    height: 8em;
     background-color: $color-black;
+
+    @media (max-width: 768px) {
+      display: none; /* Masquer le motif sur petits écrans */
+    }
+
+    &-bg {
+      background-image: url('../static/img/graph.png');
+      width: 100%;
+      height: 100%;
+      background-position: center;
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
   }
 }
 
-/* Conteneur de navigation fixe */
+/* Conteneur de navigation fixe pour grands écrans */
 .menu-navigation-container {
   width: 22%;
   height: 100vh;
@@ -23,15 +53,25 @@
   z-index: 999;
   background-color: white;
   padding: 8em 0; /* Garde un padding vertical de 8em en haut et en bas */
-  box-sizing: border-box; /* Inclut le padding dans la hauteur totale */
+  box-sizing: border-box;
   display: flex;
   margin-top: 2em;
   flex-direction: column;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    transform: translateX(-100%); /* Cacher la navigation par défaut sur petits écrans */
+    transition: transform 0.5s ease; /* Animation d'ouverture/fermeture */
+margin: 0;
+    &.open {
+      transform: translateX(0); /* Montrer le menu lorsqu'il est ouvert */
+    }
+  }
 }
 
 /* Liste du menu (ul) */
 .menu {
-  padding: 0 2em; /* Supprime le padding vertical, uniquement du padding horizontal */
+  padding: 0 2em;
   height: 100%;
   margin: 0;
   list-style: none; /* Supprime les puces */
@@ -41,6 +81,42 @@
   justify-content: space-between; /* Distribution dynamique des <li> */
 }
 
+/* Bouton pour ouvrir/fermer le menu sur petits écrans */
+.menu-toggle {
+  display: none; /* Masqué par défaut sur grands écrans */
+
+  @media (max-width: 768px) {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: $color-black;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1100;
+    cursor: pointer;
+
+    .menu-icon, .close-icon {
+      display: none;
+    }
+
+    .menu-icon {
+      display: block; /* Affiche l'icône menu par défaut */
+    }
+
+    &.open .menu-icon {
+      display: none; /* Cache l'icône menu si ouvert */
+    }
+
+    &.open .close-icon {
+      display: block; /* Affiche l'icône de fermeture si ouvert */
+    }
+  }
+}
+
 /* Éléments de menu (li) */
 .menu-item {
   &:last-child {
@@ -48,39 +124,41 @@
   }
 
   a {
-    font-family: $font-title;
-    display: block; /* Le lien prend toute la largeur */
-    text-decoration: none; /* Supprime le soulignement initial */
+    @include font-light;
+    text-transform: uppercase;
+    text-decoration: none;
     color: $color-black;
-    font-size: 30px; /* Taille de la police */
-    padding-bottom: 15px; /* Ajoute de l'espace autour du texte */
-    position: relative; /* Nécessaire pour le pseudo-élément ::after */
-    transition: color 0.3s, transform 0.3s; /* Transition sur la couleur et la transformation */
-  
-    &:hover {
-      color: rgb(49, 49, 49); /* Change la couleur du texte au survol */
-      transform: scale(1.05); /* Légère mise à l'échelle au survol */
+    font-size: 30px;
+    position: relative;
+    transition: color 0.3s, transform 0.3s;
+
+    @media (max-width: 1550px) {
+      font-size: 27px;
     }
-  
+
+    &:hover {
+      color: rgb(49, 49, 49); 
+      transform: scale(1.05);
+    }
+
     /* Pseudo-élément pour le soulignement animé */
     &::after {
       content: "";
       position: absolute;
       left: 0;
-      bottom: 0;
+      bottom: -8px;
       width: 30%;
       height: 2px;
       background-color: rgb(49, 49, 49);
-      transform: scaleX(0); /* Par défaut, l'élément est invisible */
-      transform-origin: left; /* Commence l'animation depuis la gauche */
+      transform: scaleX(0);
+      transform-origin: left;
       transition: transform 0.3s ease; /* Animation de l'extension du soulignement */
     }
-  
+
     &:hover::after {
       transform: scaleX(1); /* Animer le soulignement au survol */
     }
   }
-  
 
   /* Élément actif (current-menu-item ou current_page_item) */
   &.current-menu-item a,
@@ -94,6 +172,12 @@
       font-weight: bold;
       margin-right: 5px; /* Espace entre le ">" et le texte */
     }
+  }
+}
 
+/* Cacher la nav-logo sur petits écrans */
+@media (max-width: 768px) {
+  .nav-logo {
+    display: none;
   }
 }

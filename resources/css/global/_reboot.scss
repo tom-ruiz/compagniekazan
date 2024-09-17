@@ -13,21 +13,47 @@ body {
 .main {
   width: 78%;
   margin-left: 22%;
+  @media (max-width: 768px) {
+ margin: 0;
+ width: 100%;
+  }
 }
 
-h1, h2{
-  font-family: $font-title;
-  font-weight: 400;
+
+h1, h2, h3{
+  font-family: "CIEKAZAN";
+  font-weight: 300;
   color: white;
   margin: 0;
 }
 
-h3, h4{
+
+
+
+  @media (max-width: 1550px) {
+    h1{
+      font-size: 100px;
+    }
+    h2{
+    font-size: 86px;
+   }
+}
+
+h4{
   font-family: $font-title;
 }
 
 p{
-@include font-light;
+  line-height: 40px;
+  font-size: 30px;
+ font-family: $font-p;
   margin: 0;
+  @media (max-width: 1500px) {
+font-size: 25px;
+     }
+
 }
 
+.close-menu{
+  margin-top: -6px;
+}

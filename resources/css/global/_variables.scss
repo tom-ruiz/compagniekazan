@@ -1,9 +1,17 @@
 $color-black: #000;
 $font-serif:  "Qene-G-Demo", sans-serif;
 $font-title:  "effra", sans-serif;
+$font-p:"futura-pt", sans-serif;
 
 @mixin font-light {
     font-family: "effra", sans-serif;
     font-weight: 300;
     font-style: italic;
   }
+
+
+@mixin font-light-normal {
+  font-family: "effra", sans-serif;
+  font-weight: 300;
+}
+

@@ -1,0 +1,53 @@
+
+/* Style pour le bouton WordPress */
+.custom-button {
+    display: inline-flex; /* Pour aligner le bouton et le switch sur une ligne */
+    align-items: center;
+    padding: 6px 10px;
+    background-color: black;
+    border-radius: 32px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    position: relative;
+  }
+  
+  .custom-button:hover {
+    background-color: #333;
+    transform: translateY(-3px);
+  }
+  
+  .custom-button:active {
+    background-color: #555;
+    transform: translateY(1px);
+  }
+  
+  /* Lien bouton principal */
+  .uagb-buttons-repeater {
+    color: white;
+    font-family: $font-title;
+    font-size: 25px;
+    text-decoration: none;
+    border-style: none !important;
+    position: relative;
+  }
+  
+  /* Ajout d'un rond avec SVG en pseudo-élément ::after */
+  .custom-button::after {
+    content: ''; /* Nécessaire pour créer un pseudo-élément */
+    display: inline-block;
+    margin-left: 10px; /* Espace entre le texte et le switch */
+    width: 35px;
+    height: 35px;
+    background-color: white;
+    border-radius: 50%; /* Cercle */
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeG1sbnM6c3ZnPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDk2LjA5IDEyMi44OCI+PGc+PHBhdGggZD0iTTYxLjYsMTIyLjMxYy0xLjM0LDAuNjItMi44MiwwLjcyLTQuMTUsMC4zN2MtMS40Ni0wLjM5LTIuNzUtMS4zMS0zLjU1LTIuNjdMNzkuMDMsOTQuMzZsLTE0LjE1LDE1Ljg4Yy0xLjk3LDIuMjEtNC4yMSwzLjg4LTYuMzcsNC43NWMtMS42NiwwLjY3LTMuMzEsMC44OC00Ljg0LDAuNTZjLTEuNjktMC4zNi0zLjE0LTEuMzMtNC4yLTMuMDFjLTAuODQtMS4zMy0xLjQtMy4xMS0xLjU3LTUuMzlsLTMuOTMtMTEuMTVjLTUuMDgtMS4wNy04LjM3LTYuMDMtOC4wNy0xMS4zMmwtOC4zMy0yNy4xN2MtMC4xNC0wLjQsLTAuMjEtMC45Mi0wLjE5LTEuNDVjMC4wMi0xLjEsMC40MS0yLjA4LDEuMDgtMi44M2MwLjI5LTAuMjcsMC42NC0wLjU0LDEuMDItMC43MWM0Ljg3LTIuMSw5LjQ5LTQuMjksMTMuNzEtNi4xMmMtMC4wNy0wLjI5LTAuMjEtMC41Ny0wLjQyLTAuNzNjLTAuOTQtMC4zNy0yLjA2LTAuMzktMy4wNi0wLjA2Yy0xLjI3LDAuNC0yLjM3LDEuMS0zLjIzLDEuOTFjLTEuNTIsMS41MS0yLjE5LDMuNTUtMi4zMSw1LjgyYy0wLjE4LDQuMTIsMy4yOCw2LjcyLDcsNS43OGMxLjUsMC44LDMuMTQsMC45NSw0LjczLDAuMjdjMS42OS0wLjcyLDMuMTctMi4zNyw0LjIzLTQuNWwwLDBjMC40MS0wLjcyLDAuNzMtMS41NSwwLjk3LTIuNGMwLjQtMS40LDEuNTMtMi4yNCwyLjktMi4yYzAuMjgsMCwwLjU3LDAuMDcsMC44NCwwLjEyYzAuNzksMC4xOCwxLjE3LDAuNTEsMS41NiwxLjAyYy0wLjA4LDAuMDMtMC4xNSwwLjA2LTAuMjMsMC4wOWMwLjc4LDEuNzMsMC4xNiwyLjQyLDEuODgsNC4wMmM0LjgzLDMuOTYsNi45NCw0LjE0LDUuODgsMC44OGMtMC44Ni0zLjExLTAuODgtNC43Mi0yLjY5LTcuNDNjLTMuMzMtNC45Mi00LjA1LTExLjg2LTUuODMtMTIuNThjLTEuOTQsLTAuNzItNC42LDIuMDMtOC44My0wLjMzYy0zLjQxLTEuOTUtNS4yLTUuNjMtNy4wNy0xMC4yNGwwLjIzLDQwLjFjMC4wMiwwLjA2LDAuMDMsMC4xMiwwLjA0LDAuMTggYzAuMTcsMi4xNi0wLjA5LDMuNzYtMi4yMSw1LjIzYy0xLjEyLDAuNzEtMi4yNywwLjQ3LTQuMjUsMC4wM2MwLjAxLTAuNTIsMC4wMS0xLjA0LDAuMDEtMS42djAuMjFjMC4xNC0wLjA0LDAuMjktMC4wNiwwLjQzLDAuMDhjMS4wMywwLjUsMi4xNiwwLjkyLDIuOTgsMS40OGMwLjA5LDEuODQsMC4yNywzLjM3LDAuMzcsNC4wNmMwLjI3LDIsMi41LDMuNiwzLDEuNDFjLTEuNjItMS45OS0xLjk3LTQyLDUuNzEtMjguOTloLTAuMDFjMC44MS0wLjE0LDEuMjYsMC42MiwxLjg2LDAuMzNjMS44Mi0xLjEsMS45LTYuMzg5LTEuODUsMy4xYy0wLjIsMS43NSwwLjE4LDQuMzMsMC4zOCw3LjY3LDEuMDMtMi41MywxLjMzLDEuNjQsdGV4dD0gInVnb25nbDojLApzdmc6PHBhdGggZD0iTTUwLjA5bDIsLDA0MC44NywzNzguOHQwLDEuODQtbCwuNyksIiwgaHR0cDovLnPSBA=');
+    background-size: 20px;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  
+  
+  /* Effet de survol sur le pseudo-élément */
+  .custom-button:hover::after {
+    background-color: #ddd;
+  }
+  

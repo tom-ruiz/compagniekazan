@@ -1,0 +1,24 @@
+.contact{
+    h1{
+        font-size: 115px;
+        font-weight: bold;
+        @media (max-width: 1500px) {
+            font-size: 90px;
+               }
+        @media (max-width: 768px) {
+            font-size: 48px !important;
+             }
+    }
+
+    &-infos{
+        p{
+            font-weight: 500;
+           font-style: normal;
+           font-size: 18px;
+        }
+    }
+
+    .uagb-svg-wrapper{
+        border-radius: 50%;
+    }
+}
